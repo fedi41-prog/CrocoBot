@@ -1,15 +1,28 @@
+from collections import deque
+
 from telegram import Update
 from telegram.ext import ContextTypes
 
-from CrocoBot3 import history
+from CrocoBot3 import history, user_ids, id_counter
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    global id_counter
     user = update.message.from_user
-    if user in history:
-        history[user].append('/start')
+
+
+    if user not in user_ids:
+        user_ids[user] = id_counter
+        id_counter += 1
+        history.append(['start'])
     else:
-        history[user] = ['/start']
+        user_id = user_ids[user]
+        history[user_id].append('start')
+    user_id = user_ids[user]
+
+
+
+
     await update.message.reply_text(f'Hello, {update.effective_user.first_name} I am CrocoBot3!')
     await update.message.reply_sticker('CAACAgIAAxkBAAPhZyM38YWFmp4Xh9d_XUdrkv2wcUcAAmtiAALteBBJnaR0rEgQZ2M2BA')
     await update.message.reply_text('choose one of those yummy commands bellow!')

@@ -4,7 +4,9 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 TOKEN = '7657918931:AAEKtaMZwlZtPAR95FnrLfWL6Zkm8ODpiiA'
 BOT_USERNAME = '@fedi4Bot'
 
-history = {'moin'}
+id_counter = 0
+user_ids = {}
+history = []
 
 def handle_response(text: str) -> str:
     text = text.lower()
@@ -55,7 +57,7 @@ if __name__ == '__main__':
     bot.add_handler(MessageHandler(filters.ALL, get_sticker_file_id))
 
     # Register error handler
-    bot.add_error_handler(error)
+    #bot.add_error_handler(error)
 
     print('Starting polling...')
     # Run the bot
