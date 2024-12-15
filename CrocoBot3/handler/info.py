@@ -15,7 +15,9 @@ async def info(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await start(update, context)
 
     user_id = user_ids[user]
-    history[user_id].append('info')
+    history[user_id].append(Update)
+    print(history)
+    print(user_ids)
     #history
 
 

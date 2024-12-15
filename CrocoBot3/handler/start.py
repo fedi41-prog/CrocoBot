@@ -14,13 +14,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if user not in user_ids:
         user_ids[user] = id_counter
         id_counter += 1
-        history.append(['start'])
+        history.append([Update])
     else:
         user_id = user_ids[user]
-        history[user_id].append('start')
+        history[user_id].append(Update)
     user_id = user_ids[user]
-
-
+    print(history)
+    print(user_ids)
 
 
     await update.message.reply_text(f'Hello, {update.effective_user.first_name} I am CrocoBot3!')

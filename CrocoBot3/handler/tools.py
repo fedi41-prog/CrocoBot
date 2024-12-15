@@ -6,7 +6,8 @@ from CrocoBot3 import history, user_ids
 from CrocoBot3.handler.start import start
 
 async def get_sticker_file_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text('STICKER-FILE_ID: ' + update.message.sticker.file_id)
+    if update.message.chat.id == 7366923193:
+        await update.message.reply_text('STICKER-FILE_ID: ' + update.message.sticker.file_id)
 
 async def clear_history(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
@@ -18,7 +19,9 @@ async def clear_history(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         await start(update, context)
     user_id = user_ids[user]
 
-    history[user_id].append('info')
+    history[user_id].append(Update)
+    print(history)
+    print(user_ids)
     # history
 
 

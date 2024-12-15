@@ -25,7 +25,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type = update.message.chat.type
     text = update.message.text
 
-    print(f'User ({update.message.chat.id})in {message_type}: "{text}"')
+    print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
 
     response = handle_response(text)
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     bot.add_handler(MessageHandler(filters.TEXT, handle_message))
 
     #other
-    bot.add_handler(MessageHandler(filters.ALL, get_sticker_file_id))
+    bot.add_handler(MessageHandler(filters.Sticker.ALL, get_sticker_file_id))
 
     # Register error handler
     #bot.add_error_handler(error)
