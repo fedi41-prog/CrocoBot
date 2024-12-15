@@ -3,7 +3,9 @@ from collections import deque
 from telegram import Update
 from telegram.ext import ContextTypes
 
-from CrocoBot3 import history, user_ids, id_counter
+from CrocoBot3.admin_tools import view_history
+from CrocoBot3 import history, user_ids, id_counter, admin_tools
+from CrocoBot3.admin_tools import view_history
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -14,10 +16,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if user not in user_ids:
         user_ids[user] = id_counter
         id_counter += 1
-        history.append([Update])
+        history.append([update])
     else:
         user_id = user_ids[user]
-        history[user_id].append(Update)
+        history[user_id].append(update)
     user_id = user_ids[user]
     print(history)
     print(user_ids)
@@ -30,3 +32,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     commands = ['/info - gives you some information about the bot and the author.', '/clear_history - clears the your history with this bot.']
 
     await update.message.reply_text('\n'.join(commands))
+
+    view_history(user)
+

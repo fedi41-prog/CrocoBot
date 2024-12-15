@@ -25,6 +25,19 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type = update.message.chat.type
     text = update.message.text
 
+    # history
+    global id_counter
+    user = update.message.from_user
+
+    if user not in user_ids:
+        await start(update, context)
+
+    user_id = user_ids[user]
+    history[user_id].append(update)
+    print(history)
+    print(user_ids)
+    # history
+
     print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
 
     response = handle_response(text)
