@@ -3,7 +3,11 @@ from telebot import types
 import json
 import random
 
-bot = telebot.TeleBot('6871845196:AAGooDGNQw0FdAH8sf7rSSU8UmAZLcKH3IY')
+with open("config.json", "r") as config:
+    TOKEN = json.load(config)["TOKEN"]
+    print(TOKEN)
+
+bot = telebot.TeleBot(TOKEN)
 
 with open('user_status.json', 'rb') as data:
     user_status = json.load(data)

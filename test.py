@@ -1,6 +1,6 @@
 import telebot
 
-bot = telebot.TeleBot('7657918931:AAEKtaMZwlZtPAR95FnrLfWL6Zkm8ODpiiA')
+bot = telebot.TeleBot() # <--- TOKEN
 
 #from CrocoBot3.message_handlers.start import start
 

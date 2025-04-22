@@ -1,8 +1,13 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-TOKEN = '7657918931:AAEKtaMZwlZtPAR95FnrLfWL6Zkm8ODpiiA'
-BOT_USERNAME = '@fedi4Bot'
+import json
+
+with open("config.json", "r") as config:
+    j = json.load(config)
+    TOKEN = j["TOKEN"]
+    BOT_USERNAME = j["BOT_USERNAME"]
+    print(TOKEN)
 
 id_counter = 0
 user_ids = {}
